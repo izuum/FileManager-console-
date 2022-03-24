@@ -42,6 +42,7 @@ public class FileManager {
         } catch (IOException e) {
             System.out.println("Невозможно скопировать файл!");
         }
+        listOfFiles(true);
     }
 
     public void changeDirectory(String folderName) { //сменить папку. если "/" - перейти в корень
@@ -53,6 +54,7 @@ public class FileManager {
         }else{
             this.currentFolder = this.currentFolder + "\\" + folderName;
         }
+        listOfFiles(true);
     }
 
     public void createFile(String fileName) { //создать файл
@@ -62,11 +64,13 @@ public class FileManager {
         } catch (IOException e) {
             System.out.println("Невозможно создать файл!");
         }
+        listOfFiles(true);
     }
 
     public void makeDirectory(String newFolderName) { // создать папку
         File file = new File(currentFolder + "\\" + newFolderName);
         file.mkdir();
+        listOfFiles(true);
     }
 
     public void contentFile(String thisFileName) { //открыть файл
@@ -91,6 +95,7 @@ public class FileManager {
         } catch (IOException e) {
             System.out.println("Невозможно переименовать файл!");
         }
+        listOfFiles(true);
     }
 
     public void renameDirectory(String sourceDirectory, String destDirectory) { //переименовать папку
@@ -101,5 +106,6 @@ public class FileManager {
         } catch (IOException e) {
             System.out.println("Невозможно переименовать папку");
         }
+        listOfFiles(true);
     }
 }

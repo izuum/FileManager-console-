@@ -5,7 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         FileManager fileManager = new FileManager("src/main/resources/root");
-
+        fileManager.listOfFiles(true);
         String input = scanner.nextLine();
 
         while(!input.equals(Commands.EXIT)){
