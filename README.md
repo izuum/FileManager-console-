@@ -11,4 +11,7 @@ basic commands:
   >**cat** : file content  
   >**rename** : rename file  
   >**redir** : rename directory  
+  >**rmdir** : remove directory
+  >**rmfile** : remove file
+  >**move** : move to directory
   >**exit** : exit  

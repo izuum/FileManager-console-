@@ -8,5 +8,8 @@ public interface Commands {
     String CONTENT_FILE = "cat";
     String RENAME_FILE = "rename";
     String RENAME_DIRECTORY = "redir";
+    String DELETE_DIRECTORY = "rmdir";
+    String DELETE_FILE = "rmfile";
+    String MOVE_TO_DIRECTORY = "move";
     String EXIT = "exit";
 }

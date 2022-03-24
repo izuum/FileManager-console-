@@ -19,11 +19,12 @@ public class Main {
                 case Commands.LIST_OF_FILES_WITH_SIZE:
                     fileManager.listOfFiles(true);
                     break;
-                case Commands.COPY_FILE:
+                case Commands.COPY_FILE: {
                     String sourceFile = tokens[1];
                     String destFile = tokens[2];
                     fileManager.copyFile(sourceFile, destFile);
                     break;
+                }
                 case Commands.CHANGE_DIRECTORY:
                     String folderName = tokens[1];
                     fileManager.changeDirectory(folderName);
@@ -45,11 +46,25 @@ public class Main {
                     String fileDest = tokens[2];
                     fileManager.renameFile(fileSource, fileDest);
                     break;
-                case Commands.RENAME_DIRECTORY:
+                case Commands.RENAME_DIRECTORY: {
                     String sourceDirectory = tokens[1];
                     String destDirectory = tokens[2];
                     fileManager.renameDirectory(sourceDirectory, destDirectory);
                     break;
+                }
+                case Commands.DELETE_DIRECTORY:
+                    String sourceDirectory = tokens[1];
+                    fileManager.deleteDirectory(sourceDirectory);
+                    break;
+                case Commands.DELETE_FILE: {
+                    String sourceFile = tokens[1];
+                    fileManager.deleteFile(sourceFile);
+                    break;
+                }
+                case Commands.MOVE_TO_DIRECTORY:
+                    String srcFile = tokens[1];
+                    String destDir = tokens[2];
+                    fileManager.moveToDirectory(srcFile, destDir);
             }
             input = scanner.nextLine();
         }
