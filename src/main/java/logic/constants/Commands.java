@@ -1,6 +1,5 @@
-package constants;
+package logic.constants;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public enum Commands {

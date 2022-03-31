@@ -1,8 +1,9 @@
-import constants.Commands;
+package logic.uttils;
+
+import logic.constants.Commands;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
-import java.util.List;
 import java.util.Map;
 
 public class FileManager  {

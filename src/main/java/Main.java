@@ -1,6 +1,8 @@
+import logic.uttils.FileManager;
+
 import java.util.Scanner;
 
-import static constants.Commands.*;
+import static logic.constants.Commands.*;
 
 public class Main {
     public static void main(String[] args) {
