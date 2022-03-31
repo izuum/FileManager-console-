@@ -1,14 +1,18 @@
+import constants.Commands;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
+import java.util.List;
+import java.util.Map;
 
-public class FileManager {
+public class FileManager  {
     private String currentFolder;
     private String root;
 
     public FileManager(String currentFolder) {
         this.currentFolder = currentFolder;
         this.root = currentFolder;
+
     }
 
     public void listOfFiles(boolean sizeOfFiles) { //выводит список файлов, если true - выводит с размером файла/папки
@@ -152,5 +156,12 @@ public class FileManager {
             System.out.println("Невозможно удалить файл.");
         }
         listOfFiles(true);
+    }
+
+    public void helpList() {
+        Map<String, String> listEnum = Commands.getListEnum();
+        for (Map.Entry<String, String> entry : listEnum.entrySet()) {
+            System.out.println(entry.getKey() + "--" + entry.getValue());
+        }
     }
 }
