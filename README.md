@@ -1,5 +1,5 @@
-# FileManager-console-
-FileManager (console version)
+# uttils.FileManager-console-
+uttils.FileManager (console version)
 
 basic commands:  
   >**ll** : list of files  
