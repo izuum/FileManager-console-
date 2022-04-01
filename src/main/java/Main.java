@@ -19,7 +19,7 @@ public class Main {
             // полная хрень, потом сделаю лучше
             if (command.equals(LIST_OF_FILES.getText())) {
                 fileManager.listOfFiles(false);
-            } else if (command == LIST_OF_FILES_WITH_SIZE.getText()) {
+            } else if (command.equals(LIST_OF_FILES_WITH_SIZE.getText())) {
                 fileManager.listOfFiles(true);
             } else if (command.equals(COPY_FILE.getText())){
                 String sourceFile = tokens[1];
