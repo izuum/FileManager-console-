@@ -5,8 +5,8 @@ import static logic.constants.Commands.*;
 import static logic.uttils.FileManager.*;
 
 public class StartPoint {
-    private static String currentFolder = "src/main/resources/root";
-    private static String root = currentFolder;
+    private static String currentFolder;
+    private static String root;
 
     public static String getCurrentFolder() {
         return currentFolder;
@@ -19,12 +19,12 @@ public class StartPoint {
         return root;
     }
 
-//    public StartPoint(String currentFolder){
-//        this.currentFolder = currentFolder;
-//        this.root = currentFolder;
-//    }
+    public StartPoint(String currentFolder){
+        this.currentFolder = currentFolder;
+        this.root = currentFolder;
+    }
 
-    public static void startProgram(){
+    public void startProgram(){
         Scanner scanner = new Scanner(System.in);
         listOfFiles(true);
         String input = scanner.nextLine();

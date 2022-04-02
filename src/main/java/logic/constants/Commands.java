@@ -37,7 +37,7 @@ public enum Commands {
 
     public static Map<String, String> getListEnum() {
         for (Commands commands : values()) {
-            map.put(commands.getText(), commands.commandDescription);
+            map.put(commands.text, commands.commandDescription);
         }
         return map;
     }
