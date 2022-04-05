@@ -41,8 +41,8 @@ public class StartPoint {
         String input = scanner.nextLine();
 
         while(!input.equals(EXIT.getText())) {
-            String firstParametr;
-            String secondParametr;
+            String firstParametr = null;
+            String secondParametr = null;
             String[] tokens = input.split(" ");
             String command = tokens[0];
             if(tokens.length == 2){
@@ -53,39 +53,35 @@ public class StartPoint {
 
             ChangeDirectory cd = new ChangeDirectory();
             ContentFile cat = new ContentFile();
-            CopyFile cp = new CopyFile();
-            CreateNewFile touch = new CreateNewFile();
-            DeleteDirectory rmdir = new DeleteDirectory();
-            DeleteFile rmfile = new DeleteFile();
+//            CopyFile cp = new CopyFile();
+//            CreateNewFile touch = new CreateNewFile();
+//            DeleteDirectory rmdir = new DeleteDirectory();
+//            DeleteFile rmfile = new DeleteFile();
             Help help = new Help();
             ListOfFiles ll = new ListOfFiles();
             ListOfFilesWithSize ls = new ListOfFilesWithSize();
-            MakeDirectory mkdir = new MakeDirectory();
-            MoveToDirectory move = new MoveToDirectory();
-            RenameDirectory redir = new RenameDirectory();
-            RenameFile rename = new RenameFile();
+//            MakeDirectory mkdir = new MakeDirectory();
+//            MoveToDirectory move = new MoveToDirectory();
+//            RenameDirectory redir = new RenameDirectory();
+//            RenameFile rename = new RenameFile();
 
 
-            function.put(CHANGE_DIRECTORY.getText(), cd.changeDirectory(tokens[1], currentFolder));
-            function.put(CONTENT_FILE.getText(), cat.contentFile(tokens[1], currentFolder));
-            function.put(COPY_FILE.getText(), cp.copyFile(tokens[1], tokens[2], currentFolder));
-            function.put(CREATE_NEW_FILE.getText(), touch.createFile(tokens[1], currentFolder));
-            function.put(DELETE_DIRECTORY.getText(), rmdir.deleteDirectory(tokens[1], currentFolder));
-            function.put(DELETE_FILE.getText(), rmfile.deleteFile(tokens[1], currentFolder));
+            function.put(CHANGE_DIRECTORY.getText(), cd.changeDirectory(firstParametr, currentFolder));
+            function.put(CONTENT_FILE.getText(), cat.contentFile(firstParametr, currentFolder));
+            //function.put(COPY_FILE.getText(), cp.copyFile(firstParametr, secondParametr, currentFolder));
+            //function.put(CREATE_NEW_FILE.getText(), touch.createFile(firstParametr, currentFolder));
+            //function.put(DELETE_DIRECTORY.getText(), rmdir.deleteDirectory(firstParametr, currentFolder));
+            //function.put(DELETE_FILE.getText(), rmfile.deleteFile(firstParametr, currentFolder));
             function.put(HELP.getText(), help.helpList());
             function.put(LIST_OF_FILES.getText(), ll.listOfFiles());
             function.put(LIST_OF_FILES_WITH_SIZE.getText(), ls.listOfFiles());
-            function.put(MAKE_DIRECTORY.getText(), mkdir.makeDirectory(tokens[1], currentFolder));
-            function.put(MOVE_TO_DIRECTORY.getText(), move.moveToDirectory(tokens[1], tokens[2], currentFolder));
-            function.put(RENAME_DIRECTORY.getText(), redir.renameDirectory(tokens[1], tokens[2], currentFolder));
-            function.put(RENAME_FILE.getText(), rename.renameFile(tokens[1], tokens[2], currentFolder));
+            //function.put(MAKE_DIRECTORY.getText(), mkdir.makeDirectory(firstParametr, currentFolder));
+            //function.put(MOVE_TO_DIRECTORY.getText(), move.moveToDirectory(firstParametr, secondParametr, currentFolder));
+            //function.put(RENAME_DIRECTORY.getText(), redir.renameDirectory(firstParametr, secondParametr, currentFolder));
+            //function.put(RENAME_FILE.getText(), rename.renameFile(firstParametr, secondParametr, currentFolder));
 
-            for(Map.Entry entry : function.entrySet()){
-                if (tokens[0].equals(entry.getKey())) {
-                    function.get(entry.getKey());
-                    break;
-                }
-            }
+
+
 
 
 
