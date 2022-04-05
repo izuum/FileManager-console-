@@ -12,7 +12,7 @@ public class DeleteFile {
     public DeleteFile(/*String sourceFile, String currentFolder*/) {
     }
 
-    public static void deleteFile(String sourceFile, String currentFolder) {
+    public static Object deleteFile(String sourceFile, String currentFolder) {
         File srcFile = new File(currentFolder + "\\" + sourceFile);
         try {
             FileUtils.delete(srcFile);
@@ -20,5 +20,6 @@ public class DeleteFile {
             System.out.println("Невозможно удалить файл.");
         }
         listOfFiles();
+        return null;
     }
 }

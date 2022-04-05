@@ -12,7 +12,7 @@ public class MoveToDirectory {
     public MoveToDirectory(/*String srcFile, String destDir, String currentFolder*/) {
     }
 
-    public static void moveToDirectory(String srcFile, String destDir, String currentFolder) {
+    public static Object moveToDirectory(String srcFile, String destDir, String currentFolder) {
         boolean createDir;
         File sourceFile = new File(currentFolder + "\\" + srcFile);
         File destDirectory = new File(currentFolder + "\\" + destDir);
@@ -27,6 +27,7 @@ public class MoveToDirectory {
             System.out.println("Перемещение невозможно.");
         }
         listOfFiles();
+        return null;
     }
 
 }

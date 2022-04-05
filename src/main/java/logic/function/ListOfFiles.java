@@ -1,14 +1,12 @@
 package logic.function;
 
-import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 
 import static logic.uttils.StartPoint.getCurrentFolder;
 
 public class ListOfFiles {
 
-    public static void listOfFiles() { //выводит список файлов, если true - выводит с размером файла/папки
+    public static Object listOfFiles() { //выводит список файлов, если true - выводит с размером файла/папки
         File currentFolderAsFile = new File(getCurrentFolder());
         File[] files = currentFolderAsFile.listFiles();
         System.out.println("------------------------");
@@ -24,5 +22,6 @@ public class ListOfFiles {
         }
         System.out.println("------------------------");
         System.out.print(">: ");
+        return null;
     }
 }

@@ -12,7 +12,7 @@ public class RenameFile {
     public RenameFile(/*String fileSource, String fileDest, String currentFolder*/) {
     }
 
-    public static void renameFile(String fileSource, String fileDest, String currentFolder) { //переименовать файл
+    public static Object renameFile(String fileSource, String fileDest, String currentFolder) { //переименовать файл
         File source = new File(currentFolder + "\\" + fileSource);
         File dest = new File(currentFolder + "\\" + fileDest);
         try {
@@ -21,5 +21,6 @@ public class RenameFile {
             System.out.println("Невозможно переименовать файл!");
         }
         listOfFiles();
+        return null;
     }
 }

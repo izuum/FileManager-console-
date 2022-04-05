@@ -10,7 +10,7 @@ public class CreateNewFile {
     public CreateNewFile(/*String fileName, String currentFolder*/) {
     }
 
-    public static void createFile(String fileName, String currentFolder) { //создать файл
+    public static Object createFile(String fileName, String currentFolder) { //создать файл
         File file = new File(currentFolder + "\\" + fileName);
         try {
             file.createNewFile();
@@ -19,5 +19,6 @@ public class CreateNewFile {
         }
         listOfFiles();
 
+        return null;
     }
 }

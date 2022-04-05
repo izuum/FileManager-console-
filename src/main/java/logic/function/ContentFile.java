@@ -10,7 +10,7 @@ public class ContentFile {
     public ContentFile(/*String thisFileName, String currentFolder*/) {
     }
 
-    public static void contentFile(String thisFileName, String currentFolder) { //открыть файл
+    public static Object contentFile(String thisFileName, String currentFolder) { //открыть файл
         File file = new File(currentFolder + "\\" + thisFileName);
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -23,5 +23,6 @@ public class ContentFile {
             System.out.println("Невозможно открыть файл!");
         }
         System.out.print(">: ");
+        return null;
     }
 }

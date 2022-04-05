@@ -12,7 +12,7 @@ public class RenameDirectory {
     public RenameDirectory(/*String sourceDirectory, String destDirectory, String currentFolder*/) {
     }
 
-    public static void renameDirectory(String sourceDirectory, String destDirectory, String currentFolder) { //переименовать папку
+    public static Object renameDirectory(String sourceDirectory, String destDirectory, String currentFolder) { //переименовать папку
         File source = new File(currentFolder + "\\" + sourceDirectory);
         File dest = new File(currentFolder + "\\" + destDirectory);
         try {
@@ -21,5 +21,6 @@ public class RenameDirectory {
             System.out.println("Невозможно переименовать папку");
         }
         listOfFiles();
+        return null;
     }
 }

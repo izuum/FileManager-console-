@@ -12,7 +12,7 @@ public class CopyFile {
     public CopyFile(/*String sourceFile, String destFile, String currentFolder*/) {
     }
 
-    public static void copyFile(String sourceFile, String destFile, String currentFolder) { // копирует файл из одного в другой
+    public static Object copyFile(String sourceFile, String destFile, String currentFolder) { // копирует файл из одного в другой
         File source = new File(currentFolder + "\\" + sourceFile);
         File dest = new File(currentFolder + "\\" + destFile);
         try {
@@ -21,5 +21,6 @@ public class CopyFile {
             System.out.println("Невозможно скопировать файл!");
         }
         listOfFiles();
+        return null;
     }
 }

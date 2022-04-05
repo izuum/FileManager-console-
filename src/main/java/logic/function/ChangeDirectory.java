@@ -8,7 +8,7 @@ public class ChangeDirectory {
     public ChangeDirectory(/*String firstParametr, String currFol*/) {
     }
 
-    public static void changeDirectory(String folderName, String currentFolder) { //сменить папку. если "/" - перейти в корень
+    public static Object changeDirectory(String folderName, String currentFolder) { //сменить папку. если "/" - перейти в корень
         try {
             if (folderName.equals("/")) {                 // если ".." - выйти на уровень выше
                 setCurrentFolder(getRoot());//) = getRoot();         // иначе перейти в нужную папку
@@ -22,5 +22,6 @@ public class ChangeDirectory {
         }catch (NullPointerException e){
             System.out.println("Невозможно перейти во вложенный или несуществующий каталог. Вернитесь на уровень выше! (cd ..)");
         }
+        return null;
     }
 }
