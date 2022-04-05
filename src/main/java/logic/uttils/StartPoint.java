@@ -58,9 +58,9 @@ public class StartPoint {
 
             String firstParametr = tokens[1];
             String secondParametr = tokens[2];
-            for(Commands commands : values()){
-                if (command.equals(commands.getText())) {
-                    function.get(commands.getText());
+            for(Map.Entry entry : function.entrySet()){
+                if (command.equals(entry.getKey())) {
+                    function.get(entry.getKey());
                 }
             }
 
