@@ -1,9 +1,7 @@
 package logic.uttils;
 
 import logic.constants.Commands;
-import logic.function.*;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import static logic.constants.Commands.*;
@@ -12,7 +10,6 @@ import static logic.uttils.FileManager.*;
 public class StartPoint {
     private static String currentFolder;
     private static String root;
-    private Map<String, Object> function = new HashMap<>();
 
 
     public static String getCurrentFolder() {
@@ -29,10 +26,6 @@ public class StartPoint {
     public StartPoint(String currentFolder){
         this.currentFolder = currentFolder;
         this.root = currentFolder;
-
-        //ChangeDirectory cd = new ChangeDirectory();
-
-
     }
 
     public void startProgram(){
@@ -41,6 +34,7 @@ public class StartPoint {
         String input = scanner.nextLine();
 
         while(!input.equals(EXIT.getText())) {
+            Object qwe;
             String firstParametr = null;
             String secondParametr = null;
             String[] tokens = input.split(" ");
@@ -51,34 +45,12 @@ public class StartPoint {
                 secondParametr = tokens[2];
             }
 
-            ChangeDirectory cd = new ChangeDirectory();
-            ContentFile cat = new ContentFile();
-//            CopyFile cp = new CopyFile();
-//            CreateNewFile touch = new CreateNewFile();
-//            DeleteDirectory rmdir = new DeleteDirectory();
-//            DeleteFile rmfile = new DeleteFile();
-            Help help = new Help();
-            ListOfFiles ll = new ListOfFiles();
-            ListOfFilesWithSize ls = new ListOfFilesWithSize();
-//            MakeDirectory mkdir = new MakeDirectory();
-//            MoveToDirectory move = new MoveToDirectory();
-//            RenameDirectory redir = new RenameDirectory();
-//            RenameFile rename = new RenameFile();
-
-
-            function.put(CHANGE_DIRECTORY.getText(), cd.changeDirectory(firstParametr, currentFolder));
-            function.put(CONTENT_FILE.getText(), cat.contentFile(firstParametr, currentFolder));
-            //function.put(COPY_FILE.getText(), cp.copyFile(firstParametr, secondParametr, currentFolder));
-            //function.put(CREATE_NEW_FILE.getText(), touch.createFile(firstParametr, currentFolder));
-            //function.put(DELETE_DIRECTORY.getText(), rmdir.deleteDirectory(firstParametr, currentFolder));
-            //function.put(DELETE_FILE.getText(), rmfile.deleteFile(firstParametr, currentFolder));
-            function.put(HELP.getText(), help.helpList());
-            function.put(LIST_OF_FILES.getText(), ll.listOfFiles());
-            function.put(LIST_OF_FILES_WITH_SIZE.getText(), ls.listOfFiles());
-            //function.put(MAKE_DIRECTORY.getText(), mkdir.makeDirectory(firstParametr, currentFolder));
-            //function.put(MOVE_TO_DIRECTORY.getText(), move.moveToDirectory(firstParametr, secondParametr, currentFolder));
-            //function.put(RENAME_DIRECTORY.getText(), redir.renameDirectory(firstParametr, secondParametr, currentFolder));
-            //function.put(RENAME_FILE.getText(), rename.renameFile(firstParametr, secondParametr, currentFolder));
+            Map<String, Object> listFunc = Commands.getMapOfObj();
+            for(String func : listFunc.keySet()){
+                if(command.equals(func)){
+                    listFunc.get(func);
+                }
+            }
 
 
 

@@ -6,6 +6,7 @@ import static logic.uttils.StartPoint.*;
 public class ChangeDirectory {
 
     public ChangeDirectory(/*String firstParametr, String currFol*/) {
+
     }
 
     public static Object changeDirectory(String folderName, String currentFolder) { //сменить папку. если "/" - перейти в корень
