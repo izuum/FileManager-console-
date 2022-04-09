@@ -8,7 +8,7 @@ import static logic.uttils.StartPoint.getCurrentFolder;
 
 public class ListOfFilesWithSize {
 
-    public static Object listOfFiles() { //выводит список файлов, если true - выводит с размером файла/папки
+    public void listOfFiles() { //выводит список файлов, если true - выводит с размером файла/папки
         File currentFolderAsFile = new File(getCurrentFolder());
         File[] files = currentFolderAsFile.listFiles();
         System.out.println("------------------------");
@@ -24,6 +24,5 @@ public class ListOfFilesWithSize {
         }
         System.out.println("------------------------");
         System.out.print(">: ");
-        return null;
     }
 }

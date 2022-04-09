@@ -8,9 +8,10 @@ import java.io.IOException;
 public class ContentFile {
 
     public ContentFile(/*String thisFileName, String currentFolder*/) {
+        System.out.println("This content file");
     }
 
-    public static Object contentFile(String thisFileName, String currentFolder) { //открыть файл
+    public Object contentFile(String thisFileName, String currentFolder) { //открыть файл
         File file = new File(currentFolder + "\\" + thisFileName);
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));

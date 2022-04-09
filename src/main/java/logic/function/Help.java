@@ -6,11 +6,14 @@ import java.util.Map;
 
 public class Help {
 
-    public static Object helpList() {
+    public Help() {
+        helpList();
+    }
+
+    public void helpList() {
         Map<String, String> listEnum = Commands.getListEnum();
         for (Map.Entry<String, String> entry : listEnum.entrySet()) {
             System.out.println(entry.getKey() + "--" + entry.getValue());
         }
-        return null;
     }
 }
