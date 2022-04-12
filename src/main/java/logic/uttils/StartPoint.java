@@ -21,7 +21,6 @@ public class StartPoint {
     public StartPoint(String currentFolder){
         this.currentFolder = currentFolder;
         this.root = currentFolder;
-
     }
 
     public void startProgram(){
@@ -40,6 +39,7 @@ public class StartPoint {
                     case "help" -> fm.helpList();
                     case "ll" -> fm.listOfFiles(false);
                     case "ls" -> fm.listOfFiles(true);
+                    default -> System.out.println("Такой команды не существует, введите 'help' для просмотра списка команд.");
                 }
             }else if(tokens.length == 2){
                 firstParam = tokens[1];
@@ -50,6 +50,7 @@ public class StartPoint {
                     case "mkdir" -> fm.makeDirectory(firstParam, currentFolder);
                     case "rmdir" -> fm.deleteDirectory(firstParam, currentFolder);
                     case "rmfile" -> fm.deleteFile(firstParam, currentFolder);
+                    default -> System.out.println("Такой команды не существует, введите 'help' для просмотра списка команд.");
                 }
             }else if(tokens.length == 3){
                 firstParam = tokens[1];
@@ -59,9 +60,9 @@ public class StartPoint {
                     case "rename" -> fm.renameFile(firstParam, secondParam, currentFolder);
                     case "redir" -> fm.renameDirectory(firstParam, secondParam, currentFolder);
                     case "move" -> fm.moveToDirectory(firstParam, secondParam, currentFolder);
+                    default -> System.out.println("Такой команды не существует, введите 'help' для просмотра списка команд.");
                 }
             }
-
             input = scanner.nextLine();
         }
     }

@@ -40,6 +40,7 @@ public class FileManager  {
         try {
             FileUtils.copyFile(source, dest);
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Невозможно скопировать файл!");
         }
         listOfFiles(true);
@@ -57,6 +58,7 @@ public class FileManager  {
             }
             listOfFiles(true);
         }catch (NullPointerException e){
+            e.printStackTrace();
             System.out.println("Невозможно перейти во вложенный или несуществующий каталог. Вернитесь на уровень выше! (cd ..)");
         }
     }
@@ -66,6 +68,7 @@ public class FileManager  {
         try {
             file.createNewFile();
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Невозможно создать файл!");
         }
         listOfFiles(true);
@@ -87,6 +90,7 @@ public class FileManager  {
                 line = reader.readLine();
             }
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Невозможно открыть файл!");
         }
         System.out.print(">: ");
@@ -98,6 +102,7 @@ public class FileManager  {
         try {
             FileUtils.moveFile(source, dest);
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Невозможно переименовать файл!");
         }
         listOfFiles(true);
@@ -109,6 +114,7 @@ public class FileManager  {
         try {
             FileUtils.moveDirectory(source, dest);
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Невозможно переименовать папку");
         }
         listOfFiles(true);
@@ -119,6 +125,7 @@ public class FileManager  {
         try {
             FileUtils.deleteDirectory(source);
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Невозможно удалить каталог.");
         }
         listOfFiles(true);
@@ -136,6 +143,7 @@ public class FileManager  {
             }
             FileUtils.moveToDirectory(sourceFile, destDirectory, createDir);
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Перемещение невозможно.");
         }
         listOfFiles(true);
@@ -146,6 +154,7 @@ public class FileManager  {
         try {
             FileUtils.delete(srcFile);
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Невозможно удалить файл.");
         }
         listOfFiles(true);
