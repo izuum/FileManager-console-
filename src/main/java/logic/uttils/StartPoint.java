@@ -37,54 +37,28 @@ public class StartPoint {
             String command = tokens[0];
             if(tokens.length == 1){
                 switch (command){
-                    case "help":
-                        fm.helpList();
-                        break;
-                    case "ll":
-                        fm.listOfFiles(false);
-                        break;
-                    case "ls":
-                        fm.listOfFiles(true);
-                        break;
+                    case "help" -> fm.helpList();
+                    case "ll" -> fm.listOfFiles(false);
+                    case "ls" -> fm.listOfFiles(true);
                 }
             }else if(tokens.length == 2){
                 firstParam = tokens[1];
                 switch (command){
-                    case "cd":
-                        fm.changeDirectory(firstParam, currentFolder);
-                        break;
-                    case "cat" :
-                        fm.contentFile(firstParam, currentFolder);
-                        break;
-                    case "touch" :
-                        fm.createFile(firstParam, currentFolder);
-                        break;
-                    case "mkdir" :
-                        fm.makeDirectory(firstParam, currentFolder);
-                        break;
-                    case "rmdir" :
-                        fm.deleteDirectory(firstParam, currentFolder);
-                        break;
-                    case "rmfile" :
-                        fm.deleteFile(firstParam, currentFolder);
-                        break;
+                    case "cd" -> fm.changeDirectory(firstParam, currentFolder);
+                    case "cat" -> fm.contentFile(firstParam, currentFolder);
+                    case "touch" -> fm.createFile(firstParam, currentFolder);
+                    case "mkdir" -> fm.makeDirectory(firstParam, currentFolder);
+                    case "rmdir" -> fm.deleteDirectory(firstParam, currentFolder);
+                    case "rmfile" -> fm.deleteFile(firstParam, currentFolder);
                 }
             }else if(tokens.length == 3){
                 firstParam = tokens[1];
                 secondParam = tokens[2];
                 switch (command){
-                    case "cp" :
-                        fm.copyFile(firstParam, secondParam, currentFolder);
-                        break;
-                    case "rename" :
-                        fm.renameFile(firstParam, secondParam, currentFolder);
-                        break;
-                    case "redir" :
-                        fm.renameDirectory(firstParam, secondParam, currentFolder);
-                        break;
-                    case "move" :
-                        fm.moveToDirectory(firstParam, secondParam, currentFolder);
-                        break;
+                    case "cp" -> fm.copyFile(firstParam, secondParam, currentFolder);
+                    case "rename" -> fm.renameFile(firstParam, secondParam, currentFolder);
+                    case "redir" -> fm.renameDirectory(firstParam, secondParam, currentFolder);
+                    case "move" -> fm.moveToDirectory(firstParam, secondParam, currentFolder);
                 }
             }
 
