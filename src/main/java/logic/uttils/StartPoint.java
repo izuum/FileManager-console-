@@ -1,12 +1,7 @@
 package logic.uttils;
 
-
-
-import logic.constants.Commands;
-
 import java.util.Scanner;
 import static logic.constants.Commands.*;
-import static logic.uttils.FileManager.*;
 
 public class StartPoint {
     private static String currentFolder;
@@ -30,8 +25,9 @@ public class StartPoint {
     }
 
     public void startProgram(){
+        FileManager fm = new FileManager();
         Scanner scanner = new Scanner(System.in);
-        listOfFiles(true);
+        fm.listOfFiles(true);
         String input = scanner.nextLine();
 
         while(!input.equals(EXIT.getText())) {
@@ -42,35 +38,35 @@ public class StartPoint {
             if(tokens.length == 1){
                 switch (command){
                     case "help":
-                        helpList();
+                        fm.helpList();
                         break;
                     case "ll":
-                        listOfFiles(false);
+                        fm.listOfFiles(false);
                         break;
                     case "ls":
-                        listOfFiles(true);
+                        fm.listOfFiles(true);
                         break;
                 }
             }else if(tokens.length == 2){
                 firstParam = tokens[1];
                 switch (command){
                     case "cd":
-                        changeDirectory(firstParam, currentFolder);
+                        fm.changeDirectory(firstParam, currentFolder);
                         break;
                     case "cat" :
-                        contentFile(firstParam, currentFolder);
+                        fm.contentFile(firstParam, currentFolder);
                         break;
                     case "touch" :
-                        createFile(firstParam, currentFolder);
+                        fm.createFile(firstParam, currentFolder);
                         break;
                     case "mkdir" :
-                        makeDirectory(firstParam, currentFolder);
+                        fm.makeDirectory(firstParam, currentFolder);
                         break;
                     case "rmdir" :
-                        deleteDirectory(firstParam, currentFolder);
+                        fm.deleteDirectory(firstParam, currentFolder);
                         break;
                     case "rmfile" :
-                        deleteFile(firstParam, currentFolder);
+                        fm.deleteFile(firstParam, currentFolder);
                         break;
                 }
             }else if(tokens.length == 3){
@@ -78,16 +74,16 @@ public class StartPoint {
                 secondParam = tokens[2];
                 switch (command){
                     case "cp" :
-                        copyFile(firstParam, secondParam, currentFolder);
+                        fm.copyFile(firstParam, secondParam, currentFolder);
                         break;
                     case "rename" :
-                        renameFile(firstParam, secondParam, currentFolder);
+                        fm.renameFile(firstParam, secondParam, currentFolder);
                         break;
                     case "redir" :
-                        renameDirectory(firstParam, secondParam, currentFolder);
+                        fm.renameDirectory(firstParam, secondParam, currentFolder);
                         break;
                     case "move" :
-                        moveToDirectory(firstParam, secondParam, currentFolder);
+                        fm.moveToDirectory(firstParam, secondParam, currentFolder);
                         break;
                 }
             }

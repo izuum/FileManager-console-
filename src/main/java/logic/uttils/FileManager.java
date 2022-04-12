@@ -8,7 +8,7 @@ import static logic.uttils.StartPoint.*;
 
 public class FileManager  {
 
-    public static void listOfFiles(boolean sizeOfFiles) { //выводит список файлов, если true - выводит с размером файла/папки
+    public void listOfFiles(boolean sizeOfFiles) { //выводит список файлов, если true - выводит с размером файла/папки
         File currentFolderAsFile = new File(getCurrentFolder());
         File[] files = currentFolderAsFile.listFiles();
         System.out.println("------------------------");
@@ -34,7 +34,7 @@ public class FileManager  {
         System.out.print(">: ");
     }
 
-    public static void copyFile(String sourceFile, String destFile, String currentFolder) { // копирует файл из одного в другой
+    public void copyFile(String sourceFile, String destFile, String currentFolder) { // копирует файл из одного в другой
         File source = new File(currentFolder + "\\" + sourceFile);
         File dest = new File(currentFolder + "\\" + destFile);
         try {
@@ -45,7 +45,7 @@ public class FileManager  {
         listOfFiles(true);
     }
 
-    public static void changeDirectory(String folderName, String currentFolder) { //сменить папку. если "/" - перейти в корень
+    public void changeDirectory(String folderName, String currentFolder) { //сменить папку. если "/" - перейти в корень
         try {
             if (folderName.equals("/")) {                 // если ".." - выйти на уровень выше
                 setCurrentFolder(getRoot());//) = getRoot();         // иначе перейти в нужную папку
@@ -61,7 +61,7 @@ public class FileManager  {
         }
     }
 
-    public static void createFile(String fileName, String currentFolder) { //создать файл
+    public void createFile(String fileName, String currentFolder) { //создать файл
         File file = new File(currentFolder + "\\" + fileName);
         try {
             file.createNewFile();
@@ -71,13 +71,13 @@ public class FileManager  {
         listOfFiles(true);
     }
 
-    public static void makeDirectory(String newFolderName, String currentFolder) { // создать папку
+    public void makeDirectory(String newFolderName, String currentFolder) { // создать папку
         File file = new File(currentFolder + "\\" + newFolderName);
         file.mkdir();
         listOfFiles(true);
     }
 
-    public static void contentFile(String thisFileName, String currentFolder) { //открыть файл
+    public void contentFile(String thisFileName, String currentFolder) { //открыть файл
         File file = new File(currentFolder + "\\" + thisFileName);
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -92,7 +92,7 @@ public class FileManager  {
         System.out.print(">: ");
     }
 
-    public static void renameFile(String fileSource, String fileDest, String currentFolder) { //переименовать файл
+    public void renameFile(String fileSource, String fileDest, String currentFolder) { //переименовать файл
         File source = new File(currentFolder + "\\" + fileSource);
         File dest = new File(currentFolder + "\\" + fileDest);
         try {
@@ -103,7 +103,7 @@ public class FileManager  {
         listOfFiles(true);
     }
 
-    public static void renameDirectory(String sourceDirectory, String destDirectory, String currentFolder) { //переименовать папку
+    public void renameDirectory(String sourceDirectory, String destDirectory, String currentFolder) { //переименовать папку
         File source = new File(currentFolder + "\\" + sourceDirectory);
         File dest = new File(currentFolder + "\\" + destDirectory);
         try {
@@ -114,7 +114,7 @@ public class FileManager  {
         listOfFiles(true);
     }
 
-    public static void deleteDirectory(String sourceDirectory, String currentFolder) {
+    public void deleteDirectory(String sourceDirectory, String currentFolder) {
         File source  = new File(currentFolder + "\\" + sourceDirectory);
         try {
             FileUtils.deleteDirectory(source);
@@ -124,7 +124,7 @@ public class FileManager  {
         listOfFiles(true);
     }
 
-    public static void moveToDirectory(String srcFile, String destDir, String currentFolder) {
+    public void moveToDirectory(String srcFile, String destDir, String currentFolder) {
         boolean createDir;
         File sourceFile = new File(currentFolder + "\\" + srcFile);
         File destDirectory = new File(currentFolder + "\\" + destDir);
@@ -141,7 +141,7 @@ public class FileManager  {
         listOfFiles(true);
     }
 
-    public static void deleteFile(String sourceFile, String currentFolder) {
+    public void deleteFile(String sourceFile, String currentFolder) {
         File srcFile = new File(currentFolder + "\\" + sourceFile);
         try {
             FileUtils.delete(srcFile);
@@ -151,7 +151,7 @@ public class FileManager  {
         listOfFiles(true);
     }
 
-    public static void helpList() {
+    public void helpList() {
         Map<String, String> listEnum = Commands.getListEnum();
         for (Map.Entry<String, String> entry : listEnum.entrySet()) {
             System.out.println(entry.getKey() + "--" + entry.getValue());
