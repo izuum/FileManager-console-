@@ -65,5 +65,6 @@ public class StartPoint {
             }
             input = scanner.nextLine();
         }
+        scanner.close();
     }
 }

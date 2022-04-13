@@ -17,9 +17,9 @@ public class FileManager  {
         for (File file : files) {
             if(file.isDirectory()){
                 if(sizeOfFiles){
-                    System.out.print(file.getName() + "\\ " + FileUtils.byteCountToDisplaySize(FileUtils.sizeOfDirectory(file)));
+                    System.out.print(file.getName() + File.separator + " " + FileUtils.byteCountToDisplaySize(FileUtils.sizeOfDirectory(file)));
                 }else{
-                    System.out.print(file.getName() + "\\ ");
+                    System.out.print(file.getName() + File.separator + " ");
                 }
             }else{
                 if(sizeOfFiles){
@@ -35,8 +35,8 @@ public class FileManager  {
     }
 
     public void copyFile(String sourceFile, String destFile, String currentFolder) { // копирует файл из одного в другой
-        File source = new File(currentFolder + "\\" + sourceFile);
-        File dest = new File(currentFolder + "\\" + destFile);
+        File source = new File(currentFolder + File.separator + sourceFile);
+        File dest = new File(currentFolder + File.separator + destFile);
         try {
             FileUtils.copyFile(source, dest);
         } catch (IOException e) {
@@ -51,10 +51,10 @@ public class FileManager  {
             if (folderName.equals("/")) {                 // если ".." - выйти на уровень выше
                 setCurrentFolder(getRoot());//) = getRoot();         // иначе перейти в нужную папку
             } else if (folderName.equals("..")) {
-                int indexOfLastPosition = getCurrentFolder().lastIndexOf("\\");
+                int indexOfLastPosition = getCurrentFolder().lastIndexOf(File.separator);
                 setCurrentFolder(getCurrentFolder().substring(0, indexOfLastPosition));// = getCurrentFolder().substring(0, indexOfLastPosition);
             } else {
-                setCurrentFolder(getCurrentFolder() + "\\" + folderName);// = getCurrentFolder() + "\\" + folderName;
+                setCurrentFolder(getCurrentFolder() + File.separator + folderName);// = getCurrentFolder() + "\\" + folderName;
             }
             listOfFiles(true);
         }catch (NullPointerException e){
@@ -64,7 +64,7 @@ public class FileManager  {
     }
 
     public void createFile(String fileName, String currentFolder) { //создать файл
-        File file = new File(currentFolder + "\\" + fileName);
+        File file = new File(currentFolder + File.separator + fileName);
         try {
             file.createNewFile();
         } catch (IOException e) {
@@ -75,13 +75,13 @@ public class FileManager  {
     }
 
     public void makeDirectory(String newFolderName, String currentFolder) { // создать папку
-        File file = new File(currentFolder + "\\" + newFolderName);
+        File file = new File(currentFolder + File.separator + newFolderName);
         file.mkdir();
         listOfFiles(true);
     }
 
     public void contentFile(String thisFileName, String currentFolder) { //открыть файл
-        File file = new File(currentFolder + "\\" + thisFileName);
+        File file = new File(currentFolder + File.separator + thisFileName);
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line = reader.readLine();
@@ -89,6 +89,7 @@ public class FileManager  {
                 System.out.println(line);
                 line = reader.readLine();
             }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Невозможно открыть файл!");
@@ -97,8 +98,8 @@ public class FileManager  {
     }
 
     public void renameFile(String fileSource, String fileDest, String currentFolder) { //переименовать файл
-        File source = new File(currentFolder + "\\" + fileSource);
-        File dest = new File(currentFolder + "\\" + fileDest);
+        File source = new File(currentFolder + File.separator + fileSource);
+        File dest = new File(currentFolder + File.separator + fileDest);
         try {
             FileUtils.moveFile(source, dest);
         } catch (IOException e) {
@@ -109,8 +110,8 @@ public class FileManager  {
     }
 
     public void renameDirectory(String sourceDirectory, String destDirectory, String currentFolder) { //переименовать папку
-        File source = new File(currentFolder + "\\" + sourceDirectory);
-        File dest = new File(currentFolder + "\\" + destDirectory);
+        File source = new File(currentFolder + File.separator + sourceDirectory);
+        File dest = new File(currentFolder + File.separator + destDirectory);
         try {
             FileUtils.moveDirectory(source, dest);
         } catch (IOException e) {
@@ -121,7 +122,7 @@ public class FileManager  {
     }
 
     public void deleteDirectory(String sourceDirectory, String currentFolder) {
-        File source  = new File(currentFolder + "\\" + sourceDirectory);
+        File source  = new File(currentFolder + File.separator + sourceDirectory);
         try {
             FileUtils.deleteDirectory(source);
         } catch (IOException e) {
@@ -133,8 +134,8 @@ public class FileManager  {
 
     public void moveToDirectory(String srcFile, String destDir, String currentFolder) {
         boolean createDir;
-        File sourceFile = new File(currentFolder + "\\" + srcFile);
-        File destDirectory = new File(currentFolder + "\\" + destDir);
+        File sourceFile = new File(currentFolder + File.separator + srcFile);
+        File destDirectory = new File(currentFolder + File.separator + destDir);
         try {
             if(destDir==null){
                 createDir = true;
@@ -150,7 +151,7 @@ public class FileManager  {
     }
 
     public void deleteFile(String sourceFile, String currentFolder) {
-        File srcFile = new File(currentFolder + "\\" + sourceFile);
+        File srcFile = new File(currentFolder + File.separator + sourceFile);
         try {
             FileUtils.delete(srcFile);
         } catch (IOException e) {
@@ -165,5 +166,11 @@ public class FileManager  {
         for (Map.Entry<String, String> entry : listEnum.entrySet()) {
             System.out.println(entry.getKey() + "--" + entry.getValue());
         }
+    }
+
+    public static String universalPathFile(String filePath) {
+        String separator = File.separator;
+        String path = filePath.replaceAll("\\s\\.", separator);
+        return path;
     }
 }
