@@ -20,6 +20,8 @@ public enum Commands {
     EXIT("exit", "Выход"), // Заканчивает программу FileManager
     HELP("help", "Список команд доступных пользователю"); //Выводит на экран список доступных для ввода команд
 
+
+
     private String text;
     private String commandDescription;
     private static Map<String, String> map = new HashMap<>();
@@ -28,7 +30,6 @@ public enum Commands {
     Commands(String value, String commandDescription) {
         this.text = value;
         this.commandDescription = commandDescription;
-
     }
 
     public String getText() {

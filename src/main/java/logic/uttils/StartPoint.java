@@ -2,7 +2,6 @@ package logic.uttils;
 
 import java.util.Scanner;
 import static logic.constants.Commands.*;
-import static logic.uttils.FileManager.*;
 
 public class StartPoint {
     private static String currentFolder;
@@ -25,60 +24,47 @@ public class StartPoint {
     }
 
     public void startProgram(){
+        FileManager fm = new FileManager();
         Scanner scanner = new Scanner(System.in);
-        listOfFiles(true);
+        fm.listOfFiles(true);
         String input = scanner.nextLine();
 
-        while(!input.equals(EXIT.getText())){
+        while(!input.equals(EXIT.getText())) {
+            String firstParam;
+            String secondParam;
             String[] tokens = input.split(" ");
             String command = tokens[0];
-
-            // полная хрень, потом сделаю лучше
-            if (command.equals(LIST_OF_FILES.getText())) {
-                listOfFiles(false);
-            } else if (command.equals(LIST_OF_FILES_WITH_SIZE.getText())) {
-                listOfFiles(true);
-            } else if (command.equals(COPY_FILE.getText())){
-                String sourceFile = tokens[1];
-                String destFile = tokens[2];
-                copyFile(sourceFile, destFile, currentFolder);
-            } else if (command.equals(CHANGE_DIRECTORY.getText())) {
-                String folderName = tokens[1];
-                changeDirectory(folderName, currentFolder);
-            } else if (command.equals(CREATE_NEW_FILE.getText())) {
-                String fileName = tokens[1];
-                createFile(fileName, currentFolder);
-            } else if (command.equals(MAKE_DIRECTORY.getText())) {
-                String newFolderName = tokens[1];
-                makeDirectory(newFolderName, currentFolder);
-            } else if (command.equals(CONTENT_FILE.getText())) {
-                String thisFileName = tokens[1];
-                contentFile(thisFileName, currentFolder);
-            } else if (command.equals(RENAME_FILE.getText())) {
-                String fileSource = tokens[1];
-                String fileDest = tokens[2];
-                renameFile(fileSource, fileDest, currentFolder);
-            } else if (command.equals(RENAME_DIRECTORY.getText())) {
-                String sourceDirectory = tokens[1];
-                String destDirectory = tokens[2];
-                renameDirectory(sourceDirectory, destDirectory, currentFolder);
-            } else if (command.equals(DELETE_DIRECTORY.getText())) {
-                String sourceDirectory = tokens[1];
-                deleteDirectory(sourceDirectory, currentFolder);
-            } else if (command.equals(DELETE_FILE.getText())) {
-                String sourceFile = tokens[1];
-                deleteFile(sourceFile, currentFolder);
-            } else if (command.equals(MOVE_TO_DIRECTORY.getText())) {
-                String srcFile = tokens[1];
-                String destDir = tokens[2];
-                moveToDirectory(srcFile, destDir, currentFolder);
-            } else if (command.equals(HELP.getText())) {
-                helpList();
-            } else {
-                System.out.println("Команда отсутствует в списке");
+            if(tokens.length == 1){
+                switch (command){
+                    case "help" -> fm.helpList();
+                    case "ll" -> fm.listOfFiles(false);
+                    case "ls" -> fm.listOfFiles(true);
+                    default -> System.out.println("Такой команды не существует, введите 'help' для просмотра списка команд.");
+                }
+            }else if(tokens.length == 2){
+                firstParam = tokens[1];
+                switch (command){
+                    case "cd" -> fm.changeDirectory(firstParam, currentFolder);
+                    case "cat" -> fm.contentFile(firstParam, currentFolder);
+                    case "touch" -> fm.createFile(firstParam, currentFolder);
+                    case "mkdir" -> fm.makeDirectory(firstParam, currentFolder);
+                    case "rmdir" -> fm.deleteDirectory(firstParam, currentFolder);
+                    case "rmfile" -> fm.deleteFile(firstParam, currentFolder);
+                    default -> System.out.println("Такой команды не существует, введите 'help' для просмотра списка команд.");
+                }
+            }else if(tokens.length == 3){
+                firstParam = tokens[1];
+                secondParam = tokens[2];
+                switch (command){
+                    case "cp" -> fm.copyFile(firstParam, secondParam, currentFolder);
+                    case "rename" -> fm.renameFile(firstParam, secondParam, currentFolder);
+                    case "redir" -> fm.renameDirectory(firstParam, secondParam, currentFolder);
+                    case "move" -> fm.moveToDirectory(firstParam, secondParam, currentFolder);
+                    default -> System.out.println("Такой команды не существует, введите 'help' для просмотра списка команд.");
+                }
             }
-
             input = scanner.nextLine();
         }
+        scanner.close();
     }
 }
